@@ -84,6 +84,47 @@ body {
         translate: 0px, 0px;
     }
 }
+@keyframes leftright{
+    from{
+        fill: rgb(218, 95, 95);
+        translate: 0px, 0px;
+        rotate: -90deg;
+    }
+    12.5% {
+        fill: orange;
+        rotate: -90deg;
+    }
+    25%{
+        fill: yellow;
+        rotate: -90deg;
+    }
+    37.5%{
+        rotate: -90deg;
+        fill: limegreen;
+    }
+    50%{
+        fill: skyblue;
+        transform: translate(2.5vmax, 0px);
+        rotate: -90deg;
+    }
+    62.5%{
+        fill: rgb(135, 0, 231);
+        rotate: -90deg;
+    }
+    75%{
+        fill: rgb(188, 130, 238);
+        rotate: -90deg;
+    }
+    87.5%{
+        fill: rgb(244, 90, 192);
+        rotate: -90deg;
+    }
+    to{
+        fill: rgb(218, 95, 95);
+        translate: 0px, 0px;
+        rotate: -90deg;
+    }
+}
 @keyframes rgb{
     from{
         color: rgb(218, 95, 95);
@@ -133,14 +174,7 @@ blob {
     background: linear-gradient(to right, aquamarine, mediumpurple);
     animation: rotate 30s infinite;
     opacity: 0.8;
-}
-blur{
-    height: 105vmax;
-    width: 100vmax;
-    position: absolute;
-    z-index: 2;
-    translate: 0% -50%;
-    backdrop-filter: blur(12vmax);
+    filter: blur(12vmax);
 }
 #content{
     position: absolute;
@@ -178,7 +212,18 @@ fancy:hover{
 #goDown:hover{
     animation: backforth 5s infinite;
 }
-#goDown:active{
+#goDown.mouseright:active{
+    animation: leftright 2.5s infinite;
+    cursor: url('cursorhold.png') 2 2, pointer;
+}
+#goDown.mousedown:active{
     animation: upDown 2.5s infinite;
     cursor: url('cursorhold.png') 2 2, pointer;
+}
+.seperator{
+    height: 1vmax;
+    width: 0.1vmax;
+    margin-left: 2vmax;
+    margin-right: 2vmax;
+    fill:rgb(160, 190, 220)
 }

@@ -22,3 +22,25 @@ function updateColorScheme() {
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateColorScheme);
 updateColorScheme();
+
+fetch('./projects.json').then(data=>data.json()).then(data=>{
+	let projects = data.projects;
+	document.querySelector('.projects').querySelector('ul').innerHTML=""
+	for (let project of projects){
+		let card = document.createElement('section')
+		card.classList.add('content')
+		card.innerHTML=`<h2>${project.name}</h2>\n<p>${project.description}</p>`
+		document.body.appendChild(card)
+
+		let li = document.createElement('li')
+		li.innerHTML=`${project.name} - ${project.description}; `
+		let urls = project.urls;
+		if (urls.git){
+			li.innerHTML+=`<br><a target="_blank" href="${urls.git}">GitHub; </a>`
+		}
+		if (urls.production){
+			li.innerHTML+=`<br><a target="_blank" href="${urls.production}">Production Site; </a>`
+		}
+		document.querySelector('.projects').querySelector('ul').appendChild(li)
+	}
+})

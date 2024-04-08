@@ -1,0 +1,42 @@
+{
+    "projects":[
+        {
+            "name": "Blackjack (updated)",
+            "description": "A revamped version of my past Blackjack game. Features totally not unfair gameplay.",
+            "urls": {
+                "git": "https://github.com/npxrc/blackjackgame-updated",
+                "production": "https://blackjackgame-updated.netlify.app"
+            }
+        },
+        {
+            "name": "Blackjack (alpha)",
+            "description": "Created in 8th grade at the request of a friend, the game is no longer playable. Contains a menu and changeable music!",
+            "urls": {
+                "git": "https://github.com/npxrc/blackjackgame"
+            }
+        },
+        {
+            "name": "Branches of Government",
+            "description": "Created in 8th grade, this is a website with design from HTML5UP which has information about the 3 branches of government",
+            "urls": {
+                "git": "https://github.com/npxrc/government-project"
+            }
+        },
+        {
+            "name": "Budget Quizlet",
+            "description": "A cheap version of Quizlet's \"Learn\" feature.",
+            "urls": {
+                "git": "https://github.com/npxrc/government-project",
+                "production": "https://budgetquizlet.netlify.app"
+            }
+        },
+        {
+            "name": "TKAM eReader",
+            "description": "A simple eReader that only loads To Kill a Mockingbird.",
+            "urls": {
+                "git": "https://github.com/npxrc/funny-e-reader",
+                "production": "https://tokam.netlify.app"
+            }
+        }
+    ]
+}

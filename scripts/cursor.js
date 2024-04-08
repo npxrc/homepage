@@ -2,6 +2,7 @@ let cursorMoveDuration = 300;
 let cursor = document.getElementsByTagName('cursor')[0]
 let clientX;
 let clientY;
+let mouse='up'
 window.onpointermove = event => { 
     cursorActive();
     clientX = event.clientX;
@@ -11,38 +12,6 @@ window.onpointermove = event => {
         top: `${clientY+scrollY}px`
     }, { duration: 750, fill: "forwards" });
     hidecursor = setTimeout(() => {cursorIdle()}, 2500);
-
-    let names=[
-        //list all text elements such as <code> <h1> <p> etc
-        'CODE',
-        'P',
-        'INPUT',
-        'TEXTAREA',
-        'UL',
-        'LI',
-        'SELECT',
-        'OPTION',
-        'LABEL',
-        'H1',
-        'H2',
-        'H3',
-        'H4',
-        'H5',
-        'H6',
-    ]
-    if (names.includes(event.target.tagName.toUpperCase())){
-        cursor.animate({
-            width: '0.6vmax',
-            height: '2.5vmax',
-            borderRadius: '15%'
-        }, { duration: 250, fill: "forwards" });
-    } else{
-        cursor.animate({
-            width: '1vmax',
-            height: '1vmax',
-            borderRadius: '100%'
-        }, { duration: 250, fill: "forwards" });
-    }
 }
 if (('ontouchstart' in window)==true||navigator.msMaxTouchPoints>0){
     cursor.style.display="none"
@@ -54,7 +23,6 @@ setInterval(() => {
         cursor.style.display="block"
     }
 }, 1000);
-let mouse='up'
 window.addEventListener('mousedown', () => {
     cursorActive();
     cursor.classList.add('mousedown')

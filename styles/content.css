@@ -8,7 +8,7 @@ body {
 }
 canvas {
     position: absolute;
-    z-index: -2;
+    z-index: -3;
     top: 0;
     left: 0;
     opacity: 80%;
@@ -27,13 +27,14 @@ canvas {
 
 .hero h1 {
     font-size: 10rem;
+    z-index: -1;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
 }
-.content {
+.content{
     padding: 50px;
-    transform: translateY(-10rem)
+    margin: 0;
+    transform: translateY(-10rem);
 }
-
 .content h2 {
     margin-bottom: 20px;
     font-size: 3rem;
@@ -42,4 +43,12 @@ canvas {
 .content p {
     font-size: 1.5rem;
     line-height: 1.5;
+}
+.tip{
+    position: fixed;
+    top: 100%;
+    width: 10%;
+    background-color: rgb(200,200,200);
+    margin-left: auto;
+    margin-right: auto;
 }

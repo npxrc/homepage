@@ -23,10 +23,15 @@ setInterval(() => {
         cursor.style.display="block"
     }
 }, 1000);
-window.addEventListener('mousedown', () => {
+window.addEventListener('mousedown', (event) => {
     cursorActive();
     cursor.classList.add('mousedown')
     mouse='down'
+    let classlist=event.target.parentElement.classList[2]
+    if (classlist==null) return;
+    if (classlist==undefined) return;
+    window.open(classlist)
+    console.log(classlist);
 });
 window.addEventListener('mouseup', () => {
     cursor.classList.remove('mousedown')

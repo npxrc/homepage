@@ -28,13 +28,20 @@ fetch('./projects.json').then(data=>data.json()).then(data=>{
 	document.querySelector('.projects').querySelector('ul').innerHTML=""
 	for (let project of projects){
 		let card = document.createElement('section')
+		let urls = project.urls;
 		card.classList.add('content')
-		card.innerHTML=`<h2>${project.name}</h2>\n<p>${project.description}</p>`
+		card.innerHTML=`<h2 href="${urls.production}">${project.name} 🔗</h2>\n<p>${project.description}</p>`
+		if (urls.production){
+			card.classList.add('cursorPointer')
+			card.classList.add(urls.production)
+		} else if (urls.git){
+			card.classList.add('cursorPointer')
+			card.classList.add(urls.git)
+		}
 		document.body.appendChild(card)
 
 		let li = document.createElement('li')
 		li.innerHTML=`${project.name} - ${project.description}; `
-		let urls = project.urls;
 		if (urls.git){
 			li.innerHTML+=`<br><a target="_blank" href="${urls.git}">GitHub; </a>`
 		}

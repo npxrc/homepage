@@ -37,6 +37,14 @@
                 "git": "https://github.com/npxrc/funny-e-reader",
                 "production": "https://tokam.netlify.app"
             }
+        },
+        {
+            "name": "Weather App",
+            "description": "A weather app which uses the Weather.gov API to tell you the weather",
+            "urls": {
+                "git": "https://github.com/npxrc/weatherapp",
+                "production": "https://big-weather-app.netlify.app"
+            }
         }
     ]
 }

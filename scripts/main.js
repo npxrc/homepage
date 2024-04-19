@@ -41,13 +41,30 @@ fetch('./projects.json').then(data=>data.json()).then(data=>{
 		document.body.appendChild(card)
 
 		let li = document.createElement('li')
-		li.innerHTML=`${project.name} - ${project.description}; `
+		li.innerHTML=`<big>${project.name}</big> - ${project.description}; `
 		if (urls.git){
 			li.innerHTML+=`<br><a target="_blank" href="${urls.git}">GitHub; </a>`
 		}
 		if (urls.production){
 			li.innerHTML+=`<br><a target="_blank" href="${urls.production}">Production Site; </a>`
 		}
+		if (urls.download){
+			li.innerHTML+=`<br><a class="exeDownload ./downloads/${urls.download}">Download; </a>`
+		}
+		li.innerHTML+=`<br><br>`
 		document.querySelector('.projects').querySelector('ul').appendChild(li)
+	}
+	let exeDownloads = document.getElementsByClassName('exeDownload');
+	let forcedownload=false;
+	for (let exeDownload of exeDownloads){
+		exeDownload.addEventListener('click', (event)=>{
+			if (!forcedownload) event.preventDefault()
+			if (confirm('This is a .exe file, which is meant to be ran on Windows devices. Would you like to download anyways?')){
+				let a = document.createElement('a')
+				a.href=`${exeDownload.classList[1]}`
+				a.setAttribute('download','')
+				a.click();
+			}
+		})
 	}
 })

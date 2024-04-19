@@ -45,6 +45,14 @@
                 "git": "https://github.com/npxrc/weatherapp",
                 "production": "https://big-weather-app.netlify.app"
             }
+        },
+        {
+            "name": "Tic Toe",
+            "description": "A simple Tic Tac Toe game, that may or may not make you wait a little bit :)",
+            "urls": {
+                "git": "https://github.com/npxrc/c-sharp/commit/5b4cf396d0caafa271f540e29873768b464c9713",
+                "download": "TicToe.exe"
+            }
         }
     ]
 }

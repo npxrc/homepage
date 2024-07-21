@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="overlay" style="opacity: 0;">
+            <div class="anActualEmbed apple"><iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/was-ist-dein-lieblingsfach-single/1745695552"></iframe></div>
+            <div class="anActualEmbed spotify"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1RkmcvzRX9jDQ0Eyt6Bu4y?utm_source=generator&t=38630" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+            <div class="anActualEmbed youtube"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/39UDZMgPg5k?si=9xfsifjXGpGNiq8P&amp;controls=0" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <div class="anActualEmbed amazon"><iframe id='AmazonMusicEmbedB0D3VGS313' src='https://music.amazon.com/embed/B0D3VGS313/?id=qSx9GYAGzB&marketplaceId=ATVPDKIKX0DER&musicTerritory=US' width='100%' height='352px' frameBorder='0' style='border-radius:20px;max-width:500px'></iframe></div>
+        </div>
+        <div id="main">
+            <!-- Apple Music -->
+            <div class="top left tilt-container" onclick="window.open('https://music.apple.com/us/album/was-ist-dein-lieblingsfach/1745695552?i=1745695554')">
+                <div class="tilt-content">
+                    <!-- Content for top left -->
+                    <h1>Apple Music</h1>
+                </div>
+            </div>
+        
+            <!-- Spotify -->
+            <div class="top right tilt-container" onclick="window.open('https://open.spotify.com/episode/1RkmcvzRX9jDQ0Eyt6Bu4y?si=-nlvFzvzTUaCa2UGhBxpNg')">
+                <div class="tilt-content">
+                    <!-- Content for top right -->
+                    <h1>Spotify</h1>
+                </div>
+            </div>
+        
+            <!-- YouTube -->
+            <div class="bottom left tilt-container" onclick="window.open('https://youtu.be/39UDZMgPg5k?feature=shared')">
+                <div class="tilt-content">
+                    <!-- Content for bottom left -->
+                    <h1>YouTube</h1>
+                </div>
+            </div>
+        
+            <!-- Amazon Music -->
+            <div class="bottom right tilt-container" onclick="window.open('https://music.amazon.com/tracks/B0D3VGS313?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_D2as1LU2tzswR5Ryz6SntrcYD')">
+                <div class="tilt-content">
+                    <!-- Content for bottom right -->
+                    <h1>Amazon Music</h1>
+                </div>
+            </div>
+        </div>        
+        <script src="script.js"></script>
+		<!-- <script>
+			function onloadCallback(){
+				console.log('Google Captcha is ready')
+			}
+		</script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+			async defer>
+		</script> -->
+		
+    </body>
+</html>

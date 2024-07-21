@@ -1,4 +1,92 @@
-function $(e, i){if (typeof i == 'number'){if (i==1){/*queryselector*/return document.querySelector(e);} else if (i==2){/*queryselectorall*/return document.querySelectorAll(e);} else if (i==3){ /*tagname*/return document.getElementsByTagName(e);}else{if (i==0){console.error('you dont have to pass the second parameter since it defaults to getElementById');} else if (i>3){console.error('what are you smoking the only available DOM selectors in JS are\n    - getElementById\n  - getElementsByClassName (which youd use querySelector for)\n    - getElementsByTagName\nso are you trying to invent a new method of DOM selecting? dont pass a second parameter higher than 3');}return document.getElementById(e);}}else if (typeof i == 'boolean'){if (i==true){return document.querySelectorAll(e);} else{return document.querySelector(e);}}}
+function $(e){return document.getElementById(e)}
+
+class TypingScript {
+    /**
+     * @param {Array} array 
+     * @param {number} onscreentime 
+     * @param {number} offscreentime 
+     * @param {number} typingtime 
+	 * @param {number} onscreenindex
+     */
+    constructor(array, onscreentime, offscreentime, typingtime, onscreenindex) {
+        this.tousearray = array;
+        this.onscreenduration = onscreentime;
+        this.offscreenduration = offscreentime;
+        this.typingduration = typingtime;
+        if (!Array.isArray(array)) {
+            throw "The array passed must be an array.";
+        }
+        if (isNaN(onscreentime) || onscreentime == null || onscreentime == undefined) {
+            this.onscreenduration = 5000;
+            console.warn('The duration for onscreenduration was not passed or is not a number,\n defaulting to 5000.');
+        }
+        if (isNaN(offscreentime) || offscreentime == null || offscreentime == undefined) {
+            this.offscreenduration = 1000;
+            console.warn('The duration for offscreenduration was not passed or is not a number,\n defaulting to 1000.');
+        }
+        if (isNaN(typingtime) || typingtime == null || typingtime == undefined) {
+            this.typingduration = 50;
+            console.warn('The duration for typingduration was not passed or is not a number,\n defaulting to 50.');
+        }
+		if (isNaN(onscreenindex) || onscreenindex == null || onscreenindex == undefined) {
+            this.onscreenindex = 0;
+        } else{
+			this.onscreenindex = onscreenindex;
+		}
+
+        this.index = 0;
+        this.onscreenindex = 0;
+        this.addInt = '';
+        this.removeInt = '';
+        this.started = false;
+
+        // Bind methods to the instance
+        this.addTo = this.addTo.bind(this);
+        this.removeFrom = this.removeFrom.bind(this);
+    }
+    addTo() {
+        if (this.started == false) return;
+        let split = this.tousearray[this.onscreenindex].split('');
+        $('typed').innerHTML += split[this.index];
+        this.index++;
+        if (this.index == split.length) {
+            clearInterval(this.addInt);
+            setTimeout(() => {
+                this.removeInt = setInterval(this.removeFrom, this.typingduration);
+            }, this.onscreenduration);
+        }
+    }
+    removeFrom() {
+        if (this.started == false) return;
+        let split = this.tousearray[this.onscreenindex].split('');
+        let toAppend = "";
+        for (let i = 0; i < this.index; i++) {
+            toAppend += split[i];
+        }
+        $('typed').innerHTML = toAppend;
+        if (this.index == 0) {
+            clearInterval(this.removeInt);
+            setTimeout(() => {
+                this.addInt = setInterval(this.addTo, this.typingduration);
+            }, this.offscreenduration);
+            this.onscreenindex++;
+            if (this.onscreenindex == this.tousearray.length) {
+                this.onscreenindex = 0;
+            }
+        } else {
+            this.index--;
+        }
+    }
+    start() {
+        if (this.started) return console.error("The script has already started.");
+        this.started = true;
+        this.addInt = setInterval(this.addTo, this.typingduration);
+    }
+    stop(){
+        this.started = false;
+    }
+}
+
 let themeToggle = document.getElementById('dark-light');
 let requireThemePresence = document.getElementsByClassName('requireThemePresence');
 setInterval(()=>{
@@ -22,9 +110,57 @@ function updateColorScheme() {
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateColorScheme);
 updateColorScheme();
+let typedArray = []
+let typingscript;
+function isElementOffScreen(element) {
+	const rect = element.getBoundingClientRect();
+	return (
+	  rect.right < 0 ||
+	  rect.bottom < 0 ||
+	  rect.left > window.innerWidth ||
+	  rect.top > window.innerHeight
+	);
+}
+let offscreen=false;
+let typedarrayindex = 0;
 
-fetch('./projects.json').then(data=>data.json()).then(data=>{
+fetch('./info.json').then(data=>data.json()).then(data=>{
 	let projects = data.projects;
+	let info = data.about;
+	
+	document.querySelector('.about').innerHTML+=info.text;
+	let typingElement = document.createElement('h2')
+	typingElement.id = 'typed'
+	document.querySelector('.about').append(typingElement)
+	
+	for (let i=0;i<info.activities.length;i++){
+		console.log(Array.isArray(info.activities[i]))
+		typedArray.push(info.activities[i].text)
+	}
+
+	typingscript = new TypingScript(typedArray, 3000, 500, 40);
+	typingscript.start();
+	setTimeout(() => {
+		$('typed').style.height = $('typed').getBoundingClientRect().height+5+'px';
+	}, 500);
+
+	setInterval(() => {
+		if (isElementOffScreen($('typed'))){
+			offscreen=true;
+			typedarrayindex=typingscript.onscreenindex
+			typingscript.stop();
+			$('typed').style.height = '0px';
+			$('typed').innerHTML = '';
+		} else if (offscreen==true){
+			offscreen=false;
+			typingscript = new TypingScript(typedArray, 4000, 500, 50, typedarrayindex);
+			typingscript.start();
+			$('typed').style.height = $('typed').getBoundingClientRect().height+5+'px';
+		} else{
+			offscreen=false;
+		}
+	}, 1);
+
 	document.querySelector('.projects').querySelector('ul').innerHTML=""
 	for (let project of projects){
 		let card = document.createElement('section')

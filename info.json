@@ -1,4 +1,21 @@
 {
+    "about":{
+        "text":"<h3>Hi,<br>I'm Neil. I'm a 15 year old self-taught web developer, and I've also done some work in C# and Java before.</h3>",
+        "activities":[
+            {
+                "text": "I've played Piano for 8 years"
+            },
+            {
+                "text": "I've played Violin for 5 years"
+            },
+            {
+                "text": "I take part in my Local Teen Council, and I act as their Twitter and Instagram boy."
+            },
+            {
+                "text": "I enjoy working on my neighbors 1996 NA Mazda Miata"
+            }
+        ]
+    },
     "projects":[
         {
             "name": "Blackjack (updated)",

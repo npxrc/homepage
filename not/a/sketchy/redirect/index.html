@@ -3,58 +3,208 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>was ist dein lieblingsfach</title>
         <link rel="stylesheet" href="style.css">
+		<link rel="shortcut icon" href="icon.jpg" type="image/jpeg">
     </head>
-    <body>
-        <div id="overlay" style="opacity: 0;">
-            <div class="anActualEmbed apple"><iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/was-ist-dein-lieblingsfach-single/1745695552"></iframe></div>
-            <div class="anActualEmbed spotify"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1RkmcvzRX9jDQ0Eyt6Bu4y?utm_source=generator&t=38630" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-            <div class="anActualEmbed youtube"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/39UDZMgPg5k?si=9xfsifjXGpGNiq8P&amp;controls=0" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            <div class="anActualEmbed amazon"><iframe id='AmazonMusicEmbedB0D3VGS313' src='https://music.amazon.com/embed/B0D3VGS313/?id=qSx9GYAGzB&marketplaceId=ATVPDKIKX0DER&musicTerritory=US' width='100%' height='352px' frameBorder='0' style='border-radius:20px;max-width:500px'></iframe></div>
-        </div>
-        <div id="main">
-            <!-- Apple Music -->
-            <div class="top left tilt-container" onclick="window.open('https://music.apple.com/us/album/was-ist-dein-lieblingsfach/1745695552?i=1745695554')">
-                <div class="tilt-content">
-                    <!-- Content for top left -->
-                    <h1>Apple Music</h1>
-                </div>
-            </div>
-        
-            <!-- Spotify -->
-            <div class="top right tilt-container" onclick="window.open('https://open.spotify.com/episode/1RkmcvzRX9jDQ0Eyt6Bu4y?si=-nlvFzvzTUaCa2UGhBxpNg')">
-                <div class="tilt-content">
-                    <!-- Content for top right -->
-                    <h1>Spotify</h1>
-                </div>
-            </div>
-        
-            <!-- YouTube -->
-            <div class="bottom left tilt-container" onclick="window.open('https://youtu.be/39UDZMgPg5k?feature=shared')">
-                <div class="tilt-content">
-                    <!-- Content for bottom left -->
-                    <h1>YouTube</h1>
-                </div>
-            </div>
-        
-            <!-- Amazon Music -->
-            <div class="bottom right tilt-container" onclick="window.open('https://music.amazon.com/tracks/B0D3VGS313?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_D2as1LU2tzswR5Ryz6SntrcYD')">
-                <div class="tilt-content">
-                    <!-- Content for bottom right -->
-                    <h1>Amazon Music</h1>
-                </div>
-            </div>
-        </div>        
-        <script src="script.js"></script>
-		<!-- <script>
-			function onloadCallback(){
-				console.log('Google Captcha is ready')
+		<div id="overlay" style="display: none;">
+			<div id="cloudcaptcha" class="cf-turnstile" data-sitekey="0x4AAAAAAAfl3Fr_ellPI7yx" data-callback="cCallBack"></div>
+			<div id="gcaptcha" class="g-recaptcha" data-sitekey="6LeFTBUqAAAAAPuG2RUY2Z2W7t8bdgNzNdxZAVBT"></div>
+			<div class="anActualEmbed apple"><iframe frameborder="0" height="650" style="width:100%;max-width: 800px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/was-ist-dein-lieblingsfach-single/1745695552"></iframe></div>
+			<div class="anActualEmbed spotify"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1RkmcvzRX9jDQ0Eyt6Bu4y?utm_source=generator&t=38630" width="100%" height="152" frameBorder="0" loading="lazy"></iframe></div>
+			<div class="anActualEmbed youtube"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/39UDZMgPg5k?si=9xfsifjXGpGNiq8P&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+			<div class="anActualEmbed amazon"><iframe id='AmazonMusicEmbedB0D3VGS313' src='https://music.amazon.com/embed/B0D3VGS313/?id=qSx9GYAGzB&marketplaceId=ATVPDKIKX0DER&musicTerritory=US' width='100%' height='352px' frameBorder='0' style='border-radius:20px;max-width:500px'></iframe></div>
+
+			<button class="close" onclick="closeOverlay()">Close</button>
+		</div>
+		<div id="main">
+			<!-- Apple Music -->
+			<div class="top left tilt-container apple">
+				<div class="tilt-content">
+					<div class="bg1">
+						<h1>Apple Music</h1>
+					</div>
+					<div class="bg2">
+						<h1>Apple Music</h1>
+					</div>
+				</div>
+			</div>
+	
+			<!-- Spotify -->
+			<div class="top right tilt-container spotify">
+				<div class="tilt-content">
+					<div class="bg1">
+						<h1>Spotify</h1>
+					</div>
+					<div class="bg2">
+						<h1>Spotify</h1>
+					</div>
+				</div>
+			</div>
+	
+			<!-- YouTube -->
+			<div class="bottom left tilt-container youtube">
+				<div class="tilt-content">
+					<div class="bg1">
+						<h1>YouTube</h1>
+					</div>
+					<div class="bg2">
+						<h1>YouTube</h1>
+					</div>
+				</div>
+			</div>
+	
+			<!-- Amazon Music -->
+			<div class="bottom right tilt-container amazon">
+				<div class="tilt-content">
+					<div class="bg1">
+						<h1>Amazon Music</h1>
+					</div>
+					<div class="bg2">
+						<h1>Amazon Music</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<style>
+			/* Define initial styles for .bg1 and .bg2 */
+			.bg1, .bg2 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: flex; /* Use flexbox for centering */
+				align-items: center;
+				justify-content: center;
+				flex-direction: column; /* Stack content vertically */
+				text-align: center; /* Center text horizontally */
+				transition: opacity 250ms ease; /* Smooth transition for opacity */
+			}
+
+			.bg1 {
+				background-color: #f0f0f0; /* Plain white background */
+				z-index: 2; /* Ensure .bg1 starts above .bg2 */
+			}
+
+			.bg2 {
+				opacity: 0; /* Initially hide .bg2 */
+				z-index: 1; /* Start .bg2 below .bg1 */
+			}
+
+			.apple .bg2 {
+				background: linear-gradient(to bottom, #fa5b5b, #cc3b3b); /* Example gradient */
+			}
+			.spotify .bg2 {
+				background: linear-gradient(to bottom, #1ED760, #159944); /* Example gradient */
+			}
+			.youtube .bg2 {
+				background: linear-gradient(to bottom, #CE201F, #F02524); /* Example gradient */
+			}
+			.amazon .bg2 {
+				background: linear-gradient(to right, #0078C0, #00CAFF); /* Example gradient */
+			}
+
+			/* Hover effect */
+			.tilt-container:hover .bg1 {
+				opacity: 0; /* Fade out .bg1 on hover */
+			}
+
+			.tilt-container:hover .bg2 {
+				opacity: 1; /* Fade in .bg2 on hover */
+			}
+
+		</style>
+		<script>
+			let embeds = document.querySelectorAll('.anActualEmbed')
+			embeds.forEach((embed)=>{
+				embed.style.display="none"
+				let service = embed.classList[1];
+
+				document.querySelectorAll(`.${service}`)[1].addEventListener('click',()=>{
+					displayCaptchas(embed, service)
+				})
+			})
+			let hasFilledB4 = false;
+			
+			let jakePaulsBalls = false;
+			let jakesTimer;
+			let jakesID
+
+			let drakesBalls = false;
+			let drakesTimer;
+
+			function displayCaptchas(embed, service){
+				if (hasFilledB4){ //has already opened a service
+					location.reload()
+				} else{
+					if (!jakePaulsBalls){ //cloudflare
+						alert('Please solve the captcha which appears soon.')
+						document.getElementById('overlay').style.display='flex'
+						turnstile.render('#cloudcaptcha', {
+							sitekey: '0x4AAAAAAAfl3Fr_ellPI7yx',
+							callback: function(token) {
+								console.log('Rendered')
+							},
+						});
+						jakesTimer = setInterval(() => {
+							if (turnstile.getResponse()!==undefined){
+								jakePaulsBalls=true
+								clearInterval(jakesTimer)
+								document.getElementById('cloudcaptcha').style.display='none'
+								document.getElementById('overlay').style.display='none'
+							}
+						}, 100);
+					} else if (!drakesBalls){ //google
+						alert('You haven\'t solved enough captchas, let\'s do another.')
+						document.getElementById('overlay').style.display='flex'
+						grecaptcha.render('gcaptcha', {
+							'sitekey' : '6LeFTBUqAAAAAPuG2RUY2Z2W7t8bdgNzNdxZAVBT'
+						});
+						drakesTimer = setInterval(() => {
+							if (grecaptcha.getResponse()!==''){
+								drakesBalls=true
+								clearInterval(drakesTimer)
+								document.getElementById('gcaptcha').style.display='none'
+								document.getElementById('overlay').style.display='none'
+							}
+						}, 1);
+					} else{ //finished both
+						hasFilledB4=true;
+						alert('Oops! I accidentally dropped the metaphorical piece of paper which told me whether or not you completed the captchas or not!!! Next time you open a service, you\'ll have to do the captchas again!!! oh no!!!')					
+						embeds.forEach((embed)=>{
+							embed.style.display="none"
+							document.getElementById('overlay').style.display='none'
+						})
+						let embed = document.getElementsByClassName(service)[0]
+						if (embed.style.display!=='block'){
+							embed.style.display="block"
+							document.getElementById('overlay').style.display='flex'
+						}
+						jakePaulsBalls=false;
+						turnstile.reset('cloudcaptcha')
+						grecaptcha.reset('gcaptcha')
+					}
+				}
+			}
+			function closeOverlay(){
+				document.getElementById('overlay').style.display='none'
+				embeds.forEach((embed)=>{
+					embed.style.display="none"
+					embed.contentWindow.location.reload();
+				})
 			}
 		</script>
-		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-			async defer>
-		</script> -->
-		
-    </body>
+		<script src="script.js"></script>
+		<script>
+			function gCallBack() {
+				console.log('Google Captcha is ready');
+			}
+			function cCallBack(){
+				console.log('Cloudflare is ready')
+			}
+		</script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=gCallBack&render=explicit" async defer></script>
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=cCallBack&render=explicit" defer></script>
+	</body>
 </html>
